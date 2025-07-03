@@ -14,6 +14,6 @@ variable "ec2_emi_id" {
 }
 
 variable "env" {
-  default = "dev"
+  default = "prd"
   type    = string
 }

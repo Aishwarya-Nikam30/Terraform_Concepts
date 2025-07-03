@@ -3,7 +3,7 @@ resource aws_instance my_instance {
   for_each = tomap({
     my-instance-micro    = "t2.micro",
     #my-instance-medium = "t2.medium",
-    my_instance-micro2 = "t2.micro"
+    my_instance-small = "t2.small"
   })    #meta argument  ; you can use it's key and value
   
   depends_on = [ aws_key_pair.my-key1 , aws_security_group.my-sg1]
