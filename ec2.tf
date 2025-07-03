@@ -33,19 +33,22 @@ resource aws_default_vpc default {
 
 # instance key-pair
 resource aws_key_pair my-key1 {
-  key_name   = "my-key1"
+  key_name   = "${var.env}-devKeyPair"
   public_key = file("my-key1.pub")
-  
+  tags = {
+    Environment = "${var.env}-devKeyPair"
+  }
   }
 
 # instance security group
 resource aws_security_group my-sg1 {
-  name        = "my-sg1"
+  name        = "${var.env}-dev-sg"
   description = "Allow TLS inbound traffic and all outbound traffic"
   vpc_id = aws_default_vpc.default.id    #interpolation
 
   tags = {
     Name = "my-sg1"
+    Environment = "${var.env}-dev-sg"
   }
 #instance-sg-inbound-rule(Ingress)
 ingress {
